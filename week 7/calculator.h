@@ -5,10 +5,7 @@ private:
 	Calculator() {}
 
 public:
-	static Calculator& getInstance() {
-		static Calculator instance;
-		return instance;
-	}
+	static Calculator& getInstance();
 	double sum(double first, double second);
 	double substeact(double first, double second);
 	double multiply(double first, double second);
