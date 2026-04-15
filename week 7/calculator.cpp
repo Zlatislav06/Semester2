@@ -2,6 +2,10 @@
 using std::cout;
 #include "calculator.h"
 #define erorr_msg cout<<"Divided by zero is imposible!";
+Calculator& Calculator::getInstance() {
+	static Calculator instance;
+	return instance;
+}
 double Calculator::sum(double first, double second)
 {
 	return first + second;
