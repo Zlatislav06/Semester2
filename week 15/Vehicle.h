@@ -14,5 +14,6 @@ public:
 	const string& getRegistrtionNumber() const;
 	void setRegistrtionNumber(const string& regNumber);
 	virtual std::unique_ptr<Vehicle> clone()=0;
+	virtual ~Vehicle() = default;
 };
 
