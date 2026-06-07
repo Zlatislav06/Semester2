@@ -1,0 +1,12 @@
+Zlatislav;11235Zap!;0;0;0;0;1;
+1
+Artur;Warrior;20;20;8;1;
+0
+Vasil;SL@vi12345;0;0;0;0;2;
+1
+Gandalf;Mage;12;12;12;1;
+0
+Niki;Nikol@y12;0;0;0;0;3;
+1
+h;Mage;12;12;12;1;
+0
