@@ -267,7 +267,7 @@ void User::BuyItem()
 //Level's metods for function "Buy"
 HeroType User::ConvertStringToHeroType(string str)
 {
-	HeroType h=HeroType::Warrior;;
+	HeroType h;
 	if (str == "Warrior")
 	{
 		h = HeroType::Warrior;
@@ -279,6 +279,10 @@ HeroType User::ConvertStringToHeroType(string str)
 	else if (str == "Mage")
 	{
 		h = HeroType::Mage;
+	}
+	else
+	{
+		throw Exceptions("Error!!!");
 	}
 	return h;
 }
@@ -302,17 +306,28 @@ void User::SelectOptionAfterLevelUp(std::unique_ptr<PlayerCharacter>& it)
 }
 void User::FindAndPrintForLevelUp(string select,int prize)
 {
-
-	auto it = std::find_if(characters.begin(), characters.end(),
-		[&](std::unique_ptr<PlayerCharacter>& x)
-		{
-			return x->getHeroType() == ConvertStringToHeroType(select)
-			|| x->getName() == select;
-		});
+	std::vector<std::unique_ptr<PlayerCharacter>>::iterator it;
+	try
+	{
+		 it = std::find_if(characters.begin(), characters.end(),
+			[&](std::unique_ptr<PlayerCharacter>& x)
+			{
+				return x->getHeroType() == ConvertStringToHeroType(select);
+			});
+	}
+	catch(...)
+	{
+		it = std::find_if(characters.begin(), characters.end(),
+			[&](std::unique_ptr<PlayerCharacter>& x)
+			{
+				return x->getName() == select;
+			});
+	}
+	
 
 	if (it == characters.end()) 
 	{
-		throw Exceptions(name + "don't have this type of hero or hero named so!");
+		throw Exceptions(select + " don't have this type of hero or hero named so!");
 	}
 	else
 	{
